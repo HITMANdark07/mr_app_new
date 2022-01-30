@@ -1,0 +1,1 @@
+export const API = "https://bengalmarine.in/campeign/public/api/v1"
