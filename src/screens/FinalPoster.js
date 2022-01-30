@@ -29,15 +29,16 @@ const FinalPoster = ({currentUser,navigation, route:{params:{image, profile,doc_
             format:'png',
             quality:0.8
         }).then((capuri) => {
+            console.log(capuri);
             const formData = new FormData();
             formData.append('doctor_id',doc_id);
             formData.append('mr_id', currentUser.id);
             formData.append('template_image', {
                 uri: capuri,
-                name: `image.${Date.now()}`,
-                type: 'png'
-            })
-            formData.append('send_date',moment(new Date()).format('YYYY-MM-DD'));
+                name: `image`,
+                type: 'image/png'
+            });
+            formData.append('send_date',moment(Date.now()).format('YYYY-MM-DD'));
             console.log(formData);
             axios({
                 method:'post',
@@ -45,7 +46,7 @@ const FinalPoster = ({currentUser,navigation, route:{params:{image, profile,doc_
                 data:formData,
             }).then((res) => {
                 if(res.data.responseCode){
-                    console.log(res.data.responseCode);
+                    console.log(res.data.responseText);
                     ToastAndroid.showWithGravity(res.data.responseText, ToastAndroid.LONG, ToastAndroid.CENTER);
                 }else{
                     ToastAndroid.showWithGravity(res.data.responseText, ToastAndroid.LONG, ToastAndroid.CENTER);

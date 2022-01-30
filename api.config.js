@@ -1,1 +1,1 @@
-export const API = "https://bengalmarine.in/campeign/public/api/v1"
+export const API = "https://upconnect.app/api/v1"
