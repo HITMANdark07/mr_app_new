@@ -17,6 +17,7 @@ const AddDoctor = ({currentUser,navigation}) => {
     const [brands, setBrands] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const [email, setEmail] = React.useState("");
+    const [education, setEducation] = React.useState("");
     const [sendimage, setSendImage] = React.useState(null);
     const [image, setImage] = React.useState(null);
     const [show1, setShow1] = React.useState(false);
@@ -35,6 +36,9 @@ const AddDoctor = ({currentUser,navigation}) => {
                 break;
             case 'email':
                 setEmail(e);
+                break;
+            case 'education':
+                setEducation(e);
                 break;
             default:
                 console.log(e);
@@ -83,6 +87,7 @@ const AddDoctor = ({currentUser,navigation}) => {
         formdata.append('brand_id', selectedValue);
         formdata.append('doctor_name', dName);
         formdata.append('mobile', phone);
+        formdata.append('education', education);
         formdata.append('email', email);
         formdata.append('birth_date',moment(bdate).format('YYYY-MM-DD'));
         formdata.append('anniversary_date',moment(adate).format('YYYY-MM-DD'));
@@ -215,6 +220,9 @@ const AddDoctor = ({currentUser,navigation}) => {
                     <Text style={styles.label}>Mobile Number <Text style={{color:'red'}}>*</Text></Text>
                     <InputText name="phone" value={phone} icon="phone" placeholder="Mobile Number" handleChange={handleChange} type="numeric"  />
 
+                    <Text style={styles.label}>Doctor Education <Text style={{color:'red'}}>*</Text></Text>
+                    <InputText name="education" value={education} icon="cast-for-education" placeholder="Doctor Education" handleChange={handleChange}  />
+
                     <Text style={styles.label}>Upload Image <Text style={{color:'red'}}>*</Text></Text>
                     {
                         image ?
@@ -241,7 +249,7 @@ const AddDoctor = ({currentUser,navigation}) => {
                         )
                     }
 
-                    <Text style={styles.label}>Birth Date <Text style={{color:'red'}}>*</Text></Text>
+                    <Text style={styles.label}>Birth Date </Text>
                     <TouchableOpacity onPress={() => setShow1(true)}>
                         {/* <InputText  name="bDate" icon="cake" placeholder="Birth Date (example : 1992-10-10)" handleChange={handleChange} type="numeric"  /> */}
                         <View style={styles.input}>
@@ -250,7 +258,7 @@ const AddDoctor = ({currentUser,navigation}) => {
                         </View>
                     </TouchableOpacity>
 
-                    <Text style={styles.label}>Anniversary Date <Text style={{color:'red'}}>*</Text></Text>
+                    <Text style={styles.label}>Anniversary Date </Text>
                     <TouchableOpacity onPress={() => setShow2(true)}>
                     {/* <InputText name="aDate" icon="wc" placeholder="Anniversary Date  (example : 2002-11-08)" handleChange={handleChange} type="numeric"  /> */}
                         <View style={styles.input}>

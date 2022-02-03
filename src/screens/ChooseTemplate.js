@@ -56,7 +56,7 @@ const ChooseTemplate = ({navigation, route}) => {
                             {template.map((temp) => (
                                 <TouchableOpacity key={temp.id} activeOpacity={0.6} onPress={() => {
                                     // navigation.navigate('ChooseDoctor', {temp, doctor:doctor});
-                                    navigation.navigate("Final", {image:temp.image,doc_id:doctor.doc_id, profile:doctor.doc_image, title:temp.title, description:temp.description, name:doctor.doctor_name})
+                                    navigation.navigate("Final", {image:temp.image,doc_id:doctor.doc_id,education:doctor.education, profile:doctor.doc_image, title:temp.title, description:temp.description, name:doctor.doctor_name})
                                 }}>
                                     <TemplateCard image={temp.image} title={temp.title} description={temp.description} />
                                 </TouchableOpacity>

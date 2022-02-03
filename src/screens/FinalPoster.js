@@ -10,7 +10,7 @@ import { API } from '../../api.config';
 const ig = 'https://s3-alpha-sig.figma.com/img/7e84/585f/4d8fb2194a172cacc908d6d43497b343?Expires=1641772800&Signature=KXqmXE3XpjxvgARcZ~02M4TZ7UueadjK~rAKQhYzUJKwU~trlrBeR-QTw1kX7PnQmjEXRwOaepS-F772177IrmsVYitkBNihkf31GmLDP9bvqTu9NjDBpSXBV~aAkKTaakQuF-P4bdgw~7TOHelicoox8rNt0C~BEi-zZFHpvlIBoKzC0MjjVe28a5SGZv-VjanPJs-3TmH51kY5xwa03Ry77Iz3FG7-q-~FtXXfbOiA4~o6JyttXqxC3eWsd-2nQCacCg7JfkEZ6k8~GJhcK5jyesAYudsKNiIj8F4Vg1KFiNO8RNqiU44pxdyS17oK7ubAsgvrdKlzwoHpSyWoPQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA';
 
 const theme1="#5DBCB0";
-const FinalPoster = ({currentUser,navigation, route:{params:{image, profile,doc_id, title, description, name}}}) => {
+const FinalPoster = ({currentUser,navigation, route:{params:{image, profile,doc_id,education, title, description, name}}}) => {
 
     const viewRef = React.useRef();
     const shareImage = async() => {
@@ -83,7 +83,10 @@ const FinalPoster = ({currentUser,navigation, route:{params:{image, profile,doc_
                         {/* <Text style={styles.desc}>{description}</Text> */}
                         <View style={{flexDirection:'row', marginTop:5, alignItems:'center'}}>
                             <Image source={{uri:profile ? profile : ig}} style={{width:50, height:50, borderRadius:100}} />
+                            <View>
                             <Text style={{marginLeft:20, fontSize:16 , fontWeight:'700'}}> Dr. {name ? name: 'Dr. XYZ'}</Text>
+                            <Text style={{marginLeft:20, fontSize:12 , fontWeight:'400'}}>  {education ? education: ''}</Text>
+                            </View>
                         </View>
 
                     </ViewShot>
@@ -91,20 +94,20 @@ const FinalPoster = ({currentUser,navigation, route:{params:{image, profile,doc_
 
                     <View style={{display:'flex', flexDirection:'row', justifyContent:'center'}}>
                     <View style={{flexDirection:'row', justifyContent:'center', marginTop:50}}>
-                        <TouchableOpacity style={{backgroundColor:'#fff', padding:10, width:'50%', borderRadius:20, borderColor:theme1, borderWidth:2}}
+                        <TouchableOpacity style={{backgroundColor:'#fff', padding:8, width:'50%', borderRadius:20, borderColor:theme1, borderWidth:2}}
                         activeOpacity={0.6}
                         onPress={sub}
                         >
-                            <Text style={{color:theme1, fontWeight:'700', fontSize:20,alignSelf:'center'}}>SUBMIT</Text>
+                            <Text style={{color:theme1, fontWeight:'500', fontSize:15,alignSelf:'center'}}>SUBMIT</Text>
                         </TouchableOpacity>
                     </View>
 
                     <View style={{flexDirection:'row', justifyContent:'center', marginTop:50}}>
-                        <TouchableOpacity style={{backgroundColor:theme1, padding:10, width:'50%', borderRadius:20}}
+                        <TouchableOpacity style={{backgroundColor:theme1, padding:8, width:'50%', borderRadius:20}}
                         activeOpacity={0.6}
                         onPress={shareImage}
                         >
-                            <Text style={{color:'#fff', fontWeight:'700', fontSize:20,alignSelf:'center'}}>SHARE</Text>
+                            <Text style={{color:'#fff', fontWeight:'700', fontSize:15,alignSelf:'center'}}>SHARE</Text>
                         </TouchableOpacity>
                     </View>
                     </View>

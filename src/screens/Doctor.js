@@ -27,7 +27,7 @@ const Doctor = ({navigation, currentUser, route}) => {
                 <Image source={{uri:doctor.doc_image? doctor.doc_image: ig}} style={{height:110, width:110, borderRadius:100}} />
                 <View style={{flexDirection:'column', justifyContent:'space-around', flex:1,margin:13, marginLeft:20}}>
                     <Text style={{fontSize:18, fontWeight:'500', color:'#fff'}}>Dr. {doctor.doctor_name}</Text>
-                    <Text style={{fontSize:14, fontWeight:'400', color:'#fff'}}>Master of Surgery (MS) in Orthopedicss</Text>
+                    <Text style={{fontSize:14, fontWeight:'400', color:'#fff'}}>{doctor.education}</Text>
                 </View>
             </View>
             <TouchableOpacity style={{flexDirection:'row', justifyContent:'flex-end',marginRight:50,marginBottom:10 }} onPress={() => navigation.navigate('UpdateDoctor', {doctor:doctor})}>

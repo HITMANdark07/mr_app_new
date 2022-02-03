@@ -90,7 +90,7 @@ const CircularProgress = ({percent, size=200, wide=10, progressColor='#fff', bac
     <View style={styles.container}>
       <View style={[styles.firstProgressLayer, firstProgressLayerStyle]}></View>
       {renderThirdLayer(percent)}
-      <Text style={styles.display}>{percent}%</Text>
+      <Text style={styles.display}>{percent.toFixed(1)}%</Text>
     </View>
   );
 }

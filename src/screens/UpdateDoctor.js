@@ -17,12 +17,13 @@ const UpdateDoctor = ({currentUser,navigation, route}) => {
     const [brands, setBrands] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const [email, setEmail] = React.useState(doctor.email);
+    const [education, setEducation] = React.useState(doctor.education);
     const [sendimage, setSendImage] = React.useState(null);
     const [image, setImage] = React.useState(doctor.doc_image ? doctor.doc_image : null);
     const [show1, setShow1] = React.useState(false);
     const [show2, setShow2] = React.useState(false);
-    const [bdate, setBDate] = React.useState(new Date(doctor.birth_date));
-    const [adate, setADate] = React.useState(new Date(doctor.anniversary_date));
+    const [bdate, setBDate] = React.useState(new Date(doctor?.birth_date));
+    const [adate, setADate] = React.useState(new Date(doctor?.anniversary_date));
     const [dName, setDName] = React.useState(doctor.doctor_name);
     const [phone, setPhone] = React.useState(doctor.mobile);
     const handleChange = (name,e) => {
@@ -36,17 +37,32 @@ const UpdateDoctor = ({currentUser,navigation, route}) => {
             case 'email':
                 setEmail(e);
                 break;
+            case 'education':
+                setEducation(e);
+                break;
             default:
                 console.log(e);
         }
     }
 
+    const valuePopUp = (arr) => {
+        let i = 0;
+        for(i=0;i<arr.length;i++){
+            if(arr[i].id==selectedValue){
+                break;
+            }
+        }
+        let info = arr[i];
+        arr.splice(i,1);
+        arr.unshift(info);
+        setBrands(arr);
+    }
+
     const getBrands = () => {
         axios.post(`${API}/brand_list`,{}).then((res) => {
             if(res.data.responseCode){
-                setBrands(res.data.responseData);
                 setLoading(false);
-                // setSelectedValue(res.data.responseData[0].id);
+                valuePopUp(res.data.responseData);
             }
         }).catch((err) => {
             console.warn(err);
@@ -84,6 +100,7 @@ const UpdateDoctor = ({currentUser,navigation, route}) => {
         formdata.append('doctor_name', dName);
         formdata.append('mobile', phone);
         formdata.append('status',1);
+        formdata.append('education', education);
         formdata.append('email', email);
         formdata.append('birth_date',moment(bdate).format('YYYY-MM-DD'));
         formdata.append('anniversary_date',moment(adate).format('YYYY-MM-DD'));
@@ -215,6 +232,9 @@ const UpdateDoctor = ({currentUser,navigation, route}) => {
                     <Text style={styles.label}>Mobile Number <Text style={{color:'red'}}>*</Text></Text>
                     <InputText name="phone" value={phone} icon="phone" placeholder="Mobile Number" handleChange={handleChange} type="numeric"  />
 
+                    <Text style={styles.label}>Doctor Education <Text style={{color:'red'}}>*</Text></Text>
+                    <InputText name="education" value={education} icon="cast-for-education" placeholder="Doctor Education" handleChange={handleChange}  />
+
                     <Text style={styles.label}>Upload Image <Text style={{color:'red'}}>*</Text></Text>
                     {
                         image ?
@@ -241,7 +261,7 @@ const UpdateDoctor = ({currentUser,navigation, route}) => {
                         )
                     }
 
-                    <Text style={styles.label}>Birth Date <Text style={{color:'red'}}>*</Text></Text>
+                    <Text style={styles.label}>Birth Date </Text>
                     <TouchableOpacity onPress={() => setShow1(true)}>
                         {/* <InputText  name="bDate" icon="cake" placeholder="Birth Date (example : 1992-10-10)" handleChange={handleChange} type="numeric"  /> */}
                         <View style={styles.input}>
@@ -250,7 +270,7 @@ const UpdateDoctor = ({currentUser,navigation, route}) => {
                         </View>
                     </TouchableOpacity>
 
-                    <Text style={styles.label}>Anniversary Date <Text style={{color:'red'}}>*</Text></Text>
+                    <Text style={styles.label}>Anniversary Date </Text>
                     <TouchableOpacity onPress={() => setShow2(true)}>
                     {/* <InputText name="aDate" icon="wc" placeholder="Anniversary Date  (example : 2002-11-08)" handleChange={handleChange} type="numeric"  /> */}
                         <View style={styles.input}>

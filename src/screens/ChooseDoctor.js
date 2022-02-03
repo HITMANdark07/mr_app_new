@@ -13,6 +13,7 @@ const theme1="#5DBCB0";
 const ChooseDoctor = ({currentUser,navigation, route:{params:{temp}}}) => {
     const [image, setImage] = React.useState(temp.image);
     const [name , setName] = React.useState("");
+    const [education, setEducation] = React.useState("");
     const [doctors, setDoctors] = React.useState([]);
     const [selectedValue, setSelectedValue] = React.useState({});
     const [docId, setDocId] = React.useState("");
@@ -118,6 +119,7 @@ const ChooseDoctor = ({currentUser,navigation, route:{params:{temp}}}) => {
                             setImage(itemValue.doc_image);
                             setName(itemValue.doctor_name);
                             setDocId(itemValue.doc_id);
+                            setEducation(itemValue.education);
                             // console.log(itemValue);
                         }}
                     >
@@ -129,7 +131,7 @@ const ChooseDoctor = ({currentUser,navigation, route:{params:{temp}}}) => {
                         
                     </Picker>
                 </View>
-                <TemplateCard image={temp.image} profile={image} title={temp.title} description={temp.description} name={name} />
+                <TemplateCard image={temp.image} education={education} profile={image} title={temp.title} description={temp.description} name={name} />
 
                 <View style={{alignSelf:'center', width:'80%'}}>
                 <InputText name="dName" icon="person" value={name} placeholder="Doctor Name" handleChange={(name, e) => {
@@ -165,7 +167,7 @@ const ChooseDoctor = ({currentUser,navigation, route:{params:{temp}}}) => {
                 }
                 </View>
                             <TouchableOpacity  style={styles.next} activeOpacity={0.7} onPress={() => {
-                                navigation.navigate("Final", {image:temp.image, doc_id:docId, profile:image, title:temp.title, description:temp.description, name:name})
+                                navigation.navigate("Final", {image:temp.image, doc_id:docId,education:education, profile:image, title:temp.title, description:temp.description, name:name})
                             }}>
                                 <Text style={{color:'#fff', fontSize:20, fontWeight:'700'}}>NEXT</Text>
                             </TouchableOpacity>

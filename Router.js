@@ -31,11 +31,11 @@ const Tab = createBottomTabNavigator();
 function HomeDrawer() {
   return (
     <Drawer.Navigator screenOptions={{drawerStyle:{backgroundColor:'transparent'}}} drawerContent={(props) => <CustomDrawer {...props}  /> }>
+      <Drawer.Screen name="Template" component={Template} options={{headerShown:false, unmountOnBlur:true}} />
       <Drawer.Screen name="HomeDrawer" component={Home} options={{headerShown:false, unmountOnBlur:true}} />
       <Drawer.Screen name="AddDoctor" component={AddDoctor} options={{headerShown:false, unmountOnBlur:true}} />
       <Drawer.Screen name="ManageDoctor" component={ManageDoctor} options={{headerShown:false, unmountOnBlur:true}} />
       <Drawer.Screen name="UpdateDoctor" component={UpdateDoctor} options={{headerShown:false, unmountOnBlur:true}} />
-      <Drawer.Screen name="Template" component={Template} options={{headerShown:false, unmountOnBlur:true}} />
       <Drawer.Screen name="Report" component={Report} options={{headerShown:false, unmountOnBlur:true}} />
       <Drawer.Screen name="ChooseDoctor" component={ChooseDoctor} options={{headerShown:false, unmountOnBlur:true}} />
       <Drawer.Screen name="ChooseTemplate" component={ChooseTemplate} options={{headerShown:false, unmountOnBlur:true}} />
