@@ -77,17 +77,17 @@ const FinalPoster = ({currentUser,navigation, route:{params:{image, profile,doc_
                
                     <ViewShot ref={viewRef} style={[styles.main, {backgroundColor:getRandomColor()}]} >
 
-                        <View style={styles.card}>
-                            <Image source={{uri:image}} style={{height:200, width:'100%', borderRadius:15}} resizeMode="cover" />
-                        </View>
-                        {/* <Text style={styles.desc}>{description}</Text> */}
-                        <View style={{flexDirection:'row', marginTop:5, alignItems:'center'}}>
-                            <Image source={{uri:profile ? profile : ig}} style={{width:50, height:50, borderRadius:100}} />
+                        <View style={{flexDirection:'column', marginTop:5, alignItems:'center'}}>
+                            <Image source={{uri:profile ? profile : ig}} style={{width:80, height:80, borderRadius:100}} />
                             <View>
-                            <Text style={{marginLeft:20, fontSize:16 , fontWeight:'700'}}> Dr. {name ? name: 'Dr. XYZ'}</Text>
-                            <Text style={{marginLeft:20, fontSize:12 , fontWeight:'400'}}>  {education ? education: ''}</Text>
+                            <Text style={{fontSize:16 , fontWeight:'700', textAlign:'center'}}>Dr. {name ? name: ' XYZ'}</Text>
+                            <Text style={{ fontSize:12 , fontWeight:'400',textAlign:'center'}}>{education ? education: ''}</Text>
                             </View>
                         </View>
+                        <View style={styles.card}>
+                            <Image source={{uri:image}} style={{height:200, width:'100%', borderRadius:10}} resizeMode="cover" />
+                        </View>
+                        {/* <Text style={styles.desc}>{description}</Text> */}
 
                     </ViewShot>
                     {/* <TemplateCard  image={image} profile={profile} title={title} description={description} name={name} /> */}
