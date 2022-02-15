@@ -77,15 +77,16 @@ const FinalPoster = ({currentUser,navigation, route:{params:{image, profile,doc_
                
                     <ViewShot ref={viewRef} style={[styles.main, {backgroundColor:getRandomColor()}]} >
 
-                        <View style={{flexDirection:'column', marginTop:5, alignItems:'center'}}>
-                            <Image source={{uri:profile ? profile : ig}} style={{width:80, height:80, borderRadius:100}} />
-                            <View>
-                            <Text style={{fontSize:16 , fontWeight:'700', textAlign:'center'}}>Dr. {name ? name: ' XYZ'}</Text>
-                            <Text style={{ fontSize:12 , fontWeight:'400',textAlign:'center'}}>{education ? education: ''}</Text>
-                            </View>
-                        </View>
+                        
                         <View style={styles.card}>
                             <Image source={{uri:image}} style={{height:200, width:'100%', borderRadius:10}} resizeMode="cover" />
+                        </View>
+                        <View style={{flexDirection:'column',position:'absolute', marginTop:15, alignItems:'center', alignSelf:'center'}}>
+                            <Image source={{uri:profile ? profile : ig}} style={{width:60, height:60, borderRadius:100}} />
+                            <View>
+                            <Text style={{fontSize:16 , fontWeight:'700', textAlign:'center', color:'white'}}>Dr. {name ? name: ' XYZ'}</Text>
+                            <Text style={{ fontSize:12 , fontWeight:'400',textAlign:'center',color:'white'}}>{education ? education: ''}</Text>
+                            </View>
                         </View>
                         {/* <Text style={styles.desc}>{description}</Text> */}
 
@@ -126,10 +127,10 @@ function getRandomColor() {
 const styles = StyleSheet.create({
     main:{
         flexDirection:'column',
-        width:'90%',
+        width:'95%',
         alignSelf:'center',
         padding:10,
-        borderRadius:15,
+        borderRadius:10,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
