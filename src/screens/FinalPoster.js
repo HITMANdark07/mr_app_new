@@ -125,7 +125,7 @@ function getRandomColor() {
 }
 
 const styles = StyleSheet.create({
-    main:{
+    main:{ 
         flexDirection:'column',
         width:'95%',
         alignSelf:'center',
